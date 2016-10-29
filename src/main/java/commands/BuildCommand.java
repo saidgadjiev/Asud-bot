@@ -27,7 +27,7 @@ public class BuildCommand extends BotCommand {
 
     private static final String LOGTAG = "BUILDCOMMAND";
     public static final String COMMAND = "build";
-    public static final String DESCRIPTION = "start hudson job; atgs name job_name";
+    public static final String DESCRIPTION = "usage area_name job_name key value";
     private final HudsonDAO dao;
 
     public BuildCommand() throws SQLException, URISyntaxException {

@@ -21,7 +21,7 @@ public class AddCommand extends BotCommand {
 
     private static final String LOGTAG = "ADDCOMMAND";
     public static final String COMMAND = "add";
-    public static final String DESCRIPTION = "add new hundson";
+    public static final String DESCRIPTION = "usage area_name hadson_url login password";
     private final HudsonDAO dao;
 
     public AddCommand() throws SQLException {
@@ -34,8 +34,18 @@ public class AddCommand extends BotCommand {
         try {
             String message;
 
-            if (strings.length > 3) {
-                dao.createOrUpdate(new Hudson(strings[0], strings[1], strings[2], strings[3], strings.length > 4 ? strings[4] : ""));
+            if (strings.length > 1) {
+                if (strings.length > 2 && strings.length < 4) {
+                    MessageSender.sendMessage(absSender, chat.getId(), MessageDescription.FEW_ARGS);
+
+                    return;
+                }
+                dao.createOrUpdate(new Hudson(
+                        strings[0],
+                        strings[1],
+                        strings.length > 2 ? strings[2] : "",
+                        strings.length > 3 ? strings[3] : "",
+                        strings.length > 4 ? strings[4] : ""));
                 BotLogger.info(LOGTAG, "hudson created " + Arrays.toString(strings));
                 message = MessageDescription.HUDSON_CREATED;
             } else {

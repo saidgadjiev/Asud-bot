@@ -24,7 +24,7 @@ import java.util.Map;
 public class GetJobsCommand extends BotCommand {
 
     public static final String COMMAND = "getjobs";
-    public static final String DESCRIPTION = "this command getJobs list from hudson";
+    public static final String DESCRIPTION = "usage area_name";
     private final HudsonDAO dao;
 
     public GetJobsCommand() throws SQLException {
